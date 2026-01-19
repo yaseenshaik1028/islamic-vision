@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Islamic Vision | Hadith</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>📜 Hadith Collection</h1>
+    <select id="bookSelect">
+        <option value="bukhari">Sahih Bukhari</option>
+        <option value="muslim">Sahih Muslim</option>
+        <option value="abudawud">Abu Dawood</option>
+        <option value="tirmidhi">Tirmidhi</option>
+        <option value="nasai">Nasai</option>
+        <option value="ibnmajah">Ibn Majah</option>
+    </select>
+    <button onclick="loadHadith()">Load Hadith</button>
+</header>
+
+<main id="hadithContainer">
+    <p class="loading">Select a book and click Load</p>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
