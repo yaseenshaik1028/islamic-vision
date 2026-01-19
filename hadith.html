@@ -9,21 +9,27 @@
 
 <header>
     <h1>📜 Hadith Collection</h1>
-    <select id="bookSelect">
+
+    <select id="book">
         <option value="bukhari">Sahih Bukhari</option>
         <option value="muslim">Sahih Muslim</option>
-        <option value="abudawud">Abu Dawood</option>
-        <option value="tirmidhi">Tirmidhi</option>
+        <option value="abu-daud">Abu Dawood</option>
+        <option value="tirmidzi">Tirmidhi</option>
         <option value="nasai">Nasai</option>
-        <option value="ibnmajah">Ibn Majah</option>
+        <option value="ibnu-majah">Ibn Majah</option>
     </select>
+
     <button onclick="loadHadith()">Load Hadith</button>
 </header>
 
-<main id="hadithContainer">
-    <p class="loading">Select a book and click Load</p>
-</main>
+<main id="hadithContainer"></main>
 
-<script src="script.js"></script>
+<div class="controls">
+    <button onclick="prevPage()">⬅ Previous</button>
+    <span id="pageInfo"></span>
+    <button onclick="nextPage()">Next ➡</button>
+</div>
+
+<script src="js/hadith.js"></script>
 </body>
 </html>

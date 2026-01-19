@@ -1,41 +1,64 @@
-const API_KEY = "YOUR_API_KEY_HERE"; // 🔴 Replace this
+document.addEventListener("DOMContentLoaded", () => {
+    loadHadith();
+});
+
+let start = 1;
+let limit = 20;
+let currentBook = "bukhari";
 
 async function loadHadith() {
-    const book = document.getElementById("bookSelect").value;
-    const container = document.getElementById("hadithContainer");
+    currentBook = document.getElementById("book").value;
+    start = 1;
+    fetchHadith();
+}
 
-    container.innerHTML = "<p class='loading'>Loading Hadith...</p>";
+async function fetchHadith() {
+    const container = document.getElementById("hadithContainer");
+    const pageInfo = document.getElementById("pageInfo");
+
+    if (!container) {
+        console.error("hadithContainer not found");
+        return;
+    }
+
+    container.innerHTML = "Loading...";
+
+    const end = start + limit - 1;
 
     try {
         const response = await fetch(
-            `https://api.sunnah.com/v1/hadiths/random?collection=${book}`,
-            {
-                headers: {
-                    "X-API-Key": API_KEY
-                }
-            }
+            `https://api.hadith.gading.dev/books/${currentBook}?range=${start}-${end}`
         );
 
-        if (!response.ok) {
-            throw new Error("API Error");
-        }
-
         const data = await response.json();
-        const hadith = data.hadith[0];
+        container.innerHTML = "";
 
-        container.innerHTML = `
-            <div class="hadith">
-                <div class="arabic">${hadith.arabic}</div>
-                <div class="english">${hadith.english.text}</div>
-            </div>
-        `;
+        data.data.hadiths.forEach(h => {
+            container.innerHTML += `
+                <div class="hadith">
+                    <div class="number">Hadith #${h.number}</div>
+                    <div class="arabic">${h.arab}</div>
+                    <div class="translation">${h.id}</div>
+                </div>
+            `;
+        });
 
-    } catch (error) {
-        container.innerHTML = `
-            <p style="color:red; text-align:center;">
-                Error loading hadith. Check API key or internet.
-            </p>
-        `;
-        console.error(error);
+        pageInfo.innerText = `Showing ${start} – ${end}`;
+
+    } catch (err) {
+        container.innerHTML = "<p style='color:red'>Error loading hadith</p>";
+        console.error(err);
+    }
+}
+
+function nextPage() {
+    start += limit;
+    fetchHadith();
+}
+
+function prevPage() {
+    if (start > 1) {
+        start -= limit;
+        fetchHadith();
     }
 }
