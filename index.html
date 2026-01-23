@@ -1,31 +1,159 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Prayer Times | Islamic Vision</title>
+  <title>Islamic Vision - Minimalist Luxury</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
 
-  <link rel="stylesheet" href="prayer.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+
 </head>
 <body>
 
-<header>
-  <h1>🕌 Prayer Times</h1>
-  <p>Accurate daily Salah timings</p>
+<!-- MINIMAL HEADER -->
+<header class="minimal-header">
+  <nav class="top-nav">
+    <div class="logo">Islamic Vision</div>
+    <div class="nav-menu">
+      <a href="#features">Features</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
 </header>
 
-<section class="location-box">
-  <input type="text" id="city" placeholder="Enter City (e.g. Hyderabad)">
-  <input type="text" id="country" placeholder="Enter Country (e.g. India)">
-  <button onclick="getPrayerTimes()">Get Prayer Times</button>
+<!-- HERO SECTION -->
+<section class="hero-minimal">
+  <div class="hero-text">
+    <div class="assamualaikum"
+    ></div>━ ٱلسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ ٱللَّٰهِ وَبَرَكَاتُهُ ━
+</div>
+    <h1>Islamic Knowledge Platform</h1>
+    <p class="tagline">𝐬𝐭𝐚𝐫𝐭 𝐰𝐢𝐭𝐡 𝐭𝐡𝐞 𝐧𝐚𝐦𝐞 𝐨𝐟 𝐀𝐥𝐥𝐚𝐡.</p>
+  </div>
+  
+  <div class="daily-verse-luxury">
+    <span class="verse-label">Today's Verse</span>
+    <p class="verse-arabic" id="highlightArabic"></p>
+    <p class="verse-english" id="highlightEnglish"></p>
+    <small id="highlightRef"></small>
+  </div>
 </section>
 
-<section id="dateBox"></section>
+<!-- MAIN FEATURES -->
+<section class="features-minimal" id="features">
+  <div class="section-intro">
+    <h2>Our Services</h2>
+    <div class="divider"></div>
+  </div>
 
-<section id="prayerTimes" class="prayer-container">
-  <!-- Prayer times will appear here -->
+  <div class="features-grid-luxury">
+    <a href="quran.html" class="feature-item">
+      <div class="feature-icon">📖</div>
+      <h3>The Qur'an</h3>
+      <p>Complete text with translations and audio recitations</p>
+    </a>
+
+    <a href="hadith.html" class="feature-item">
+      <div class="feature-icon">📚</div>
+      <h3>Authentic Hadith</h3>
+      <p>Curated collections from Sahih sources</p>
+    </a>
+
+    <a href="prayer.html" class="feature-item">
+      <div class="feature-icon">🕋</div>
+      <h3>Prayer Times</h3>
+      <p>Precise timing for your location</p>
+    </a>
+
+    <a href="#" class="feature-item">
+      <div class="feature-icon">✨</div>
+      <h3>Duas & Adhkar</h3>
+      <p>Daily supplications and remembrance</p>
+    </a>
+
+    <a href="mosque.html" class="feature-item">
+      <div class="feature-icon">🕌</div>
+      <h3>Mosques & Events</h3>
+      <p>Discover Islamic community around you</p>
+    </a>
+
+    <a href="article.html" class="feature-item">
+      <div class="feature-icon">✍️</div>
+      <h3>Knowledge Hub</h3>
+      <p>Insights and Islamic guidance</p>
+    </a>
+  </div>
 </section>
 
-<script src="prayer.js"></script>
+<!-- LATEST ARTICLES -->
+<section class="articles-section" id="about">
+  <div class="section-intro">
+    <h2>Latest Articles</h2>
+    <div class="divider"></div>
+  </div>
+  <div id="latestArticles" class="articles-grid"></div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section class="about-section">
+  <div class="about-content">
+    <h2>About Islamic Vision</h2>
+    <p>We believe in presenting Islamic knowledge with elegance and simplicity. Our minimalist approach honors the wisdom while keeping distractions to a minimum.</p>
+    <div class="values">
+      <div class="value-item">
+        <h4>Pure</h4>
+        <p>Authentic Islamic knowledge</p>
+      </div>
+      <div class="value-item">
+        <h4>Simple</h4>
+        <p>Elegant, distraction-free design</p>
+      </div>
+      <div class="value-item">
+        <h4>Accessible</h4>
+        <p>Available anywhere, anytime</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="luxury-footer" id="contact">
+  <div class="footer-content">
+    <div class="footer-col">
+      <h5>Quick Links</h5>
+      <ul>
+        <li><a href="quran.html">Qur'an</a></li>
+        <li><a href="hadith.html">Hadith</a></li>
+        <li><a href="prayer.html">Prayer Times</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Resources</h5>
+      <ul>
+        <li><a href="article.html">Articles</a></li>
+        <li><a href="mosque.html">Mosques</a></li>
+        <li><a href="#">Privacy</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Connect</h5>
+      <ul>
+        <li><a href="#">Twitter</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Islamic Vision. Designed with intention.</p>
+    <p class="quran-ref">الحمد لله رب العالمين</p>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
 </body>
 </html>
