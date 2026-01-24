@@ -5,27 +5,51 @@
   <title>Prayer Times | Islamic Vision</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- CSS -->
   <link rel="stylesheet" href="prayer.css">
 </head>
 <body>
 
+<!-- HEADER -->
 <header>
   <h1>🕌 Prayer Times</h1>
   <p>Accurate daily Salah timings</p>
 </header>
 
+<!-- LOCATION INPUT -->
 <section class="location-box">
   <input type="text" id="city" placeholder="Enter City (e.g. Hyderabad)">
   <input type="text" id="country" placeholder="Enter Country (e.g. India)">
   <button onclick="getPrayerTimes()">Get Prayer Times</button>
 </section>
 
+<!-- DATE -->
 <section id="dateBox"></section>
 
-<section id="prayerTimes" class="prayer-container">
-  <!-- Prayer times will appear here -->
+<!-- PRAYER TIMES -->
+<section id="prayerContainer" class="prayer-container">
+  <!-- Prayer cards come here -->
 </section>
 
+<!-- QIBLA SECTION -->
+<section id="qiblaBox">
+  <h2>🧭 Qibla Direction</h2>
+  <p id="qiblaText">Allow location to see Qibla direction</p>
+  <div id="qiblaArrow">⬆️</div>
+</section>
+
+<!-- RAMADAN SECTION -->
+<section id="ramadanBox">
+  <h2>🌙 Ramadan Timetable</h2>
+  <div id="ramadanTimes">
+    <!-- Sehri & Iftar will load here -->
+  </div>
+</section>
+
+<!-- JAVASCRIPT FILES -->
 <script src="js/prayer.js"></script>
+<script src="js/qibla.js"></script>
+<script src="js/ramadan.js"></script>
+
 </body>
 </html>
