@@ -1,43 +1,51 @@
-// 🌙 Ramadan Timetable Script (Sehri & Iftar)
-// Uses Aladhan API (CORS safe, no API key required)
+// 🌙 Ramadan Timetable (Islamically Correct, No Guessing)
+// Uses official Hijri calendar from AlAdhan
+// Shows EXACT Ramadan days (29 or 30 as per calendar)
 
 const ramadanBox = document.getElementById("ramadanTimes");
 
-// Change city & country if you want default
-const DEFAULT_CITY = "Hyderabad";
-const DEFAULT_COUNTRY = "India";
+// Change city/country if needed
+const CITY = "Hyderabad";
+const COUNTRY = "India";
+const METHOD = 2;
 
-// Get current year & Ramadan month (Hijri 9)
-const today = new Date();
-const year = today.getFullYear();
+// Ramadan 2026 = Hijri 1447 AH, month 9
+const HIJRI_YEAR = 1447;
+const RAMADAN_MONTH = 9;
 
-// Helper: load Ramadan timetable
-async function loadRamadan() {
-  ramadanBox.innerHTML = "Loading Ramadan timetable...";
+async function loadRamadanTimetable() {
+  ramadanBox.innerHTML = "Loading authentic Ramadan timetable...";
 
   try {
-    const url = `https://api.aladhan.com/v1/hijriCalendarByCity?city=${DEFAULT_CITY}&country=${DEFAULT_COUNTRY}&method=2&month=9&year=${year}`;
-    const response = await fetch(url);
-    const data = await response.json();
+    const response = await fetch(
+      `https://api.aladhan.com/v1/hijriCalendarByCity?city=${CITY}&country=${COUNTRY}&method=${METHOD}&month=${RAMADAN_MONTH}&year=${HIJRI_YEAR}`
+    );
 
-    if (!data.data) {
-      throw new Error("No Ramadan data");
+    const json = await response.json();
+
+    if (!json.data || json.data.length === 0) {
+      throw new Error("No Ramadan data received");
     }
 
     ramadanBox.innerHTML = "";
 
-    data.data.forEach(day => {
-      // Only Hijri month 9 (Ramadan)
-      if (day.date.hijri.month.number !== 9) return;
-
+    json.data.forEach((day, index) => {
       ramadanBox.innerHTML += `
         <div class="ramadan-day">
-          <strong>${day.date.readable}</strong><br>
+          <strong>Roza ${index + 1}</strong><br>
+          📅 ${day.date.readable}<br>
           🌅 Sehri (Fajr): ${day.timings.Fajr}<br>
           🌇 Iftar (Maghrib): ${day.timings.Maghrib}
         </div>
       `;
     });
+
+    // Optional info line
+    ramadanBox.innerHTML += `
+      <p style="text-align:center;margin-top:10px;font-weight:bold;">
+        Total Roze: ${json.data.length}
+      </p>
+    `;
 
   } catch (error) {
     ramadanBox.innerHTML =
@@ -47,4 +55,4 @@ async function loadRamadan() {
 }
 
 // Auto load on page open
-loadRamadan();
+loadRamadanTimetable();
